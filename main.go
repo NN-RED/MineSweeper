@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"minesweeper/internal/game" // Путь к твоему пакету ядра
+	"minesweeper/internal/game"
 	"os"
 	"time"
 
