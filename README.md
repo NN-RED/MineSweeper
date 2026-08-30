@@ -1,41 +1,40 @@
 # Minesweeper-TUI
 
-Минималистичная реализация классической игры «Сапер» для терминала, написанная на языке Go. Проект разработан с упором на чистую архитектуру (разделение логики и интерфейса) и высокую производительность отрисовки без использования тяжелых графических фреймворков.
+Minimalistic realization game Minesweeper in terminal, based on Go. Project was released with pure architecture and high rendering perfomance without heavy GUI frameworks.
 
-## Особенности проекта
+## Project features
 
-* **Чистая архитектура:** Вся математика и логика игры находится в `internal/game` (`board.go`). Модуль отрисовки (`main.go`) ничего не знает о правилах генерации мин, он лишь отображает текущее состояние игры.
-* **Плавный ANSI-рендеринг:** Отрисовка интерфейса вынесена в отдельную фоновую **горутину**. Использование Esc-последовательностей `\033[H` позволяет обновлять экран без мерцания терминала.
-* **Асинхронный таймер:** Независимый счетчик времени (ММ:СС), который плавно обновляется в реальном времени и не блокируется ожиданием ввода с клавиатуры.
-* **Кроссплатформенность:** Игра компилируется в один независимый бинарный файл для Windows, Linux или macOS.
+* **Pure architecture:** All math and logic of the game are located in `internal/game` (`board.go`). Rendering part (`main.go`) knows nothing about mines generation rules, its just show current state of the game.
+* **Smooth ANSI-rendering:** Interface rendering based in separate **goroutine**. Using Esc-queue `\033[H` can update display without terminal shimmer.
+* **Cross-platform capability:** Game compiles in one independent binary file for Windows, Linux and macOs.
 
-## Структура проекта
+## Project structure
 ```text
-├── go.mod                # Go-модуль и зависимости
-├── go.sum                # Контрольные суммы (гарантия безопасности библиотек)
-├── main.go               # Точка входа: инициализация, горутина рендеринга и обработка ввода
+├── go.mod                # Go-module and dependencies
+├── go.sum                # Control summs (security of libraries)
+├── main.go               # Entry point: initialization, rendering goroutine and input processing
 └── internal/
     └── game/
-        └── board.go      # Математическое ядро игры 
+        └── board.go      # The game's mathematical core 
 ```
 
-## Управление в игре
- * Стрелочки / WASD — Перемещение курсора (⭐) по игровому полю.
- * Пробел / Enter — Открыть выбранную клетку.
- * F / f — Установить или снять флаг (🚩) на предполагаемую мину.
- * Esc — Мгновенный выход из игры.
+## Game Controls
+ * Arrows / WASD — Moving the cursor (⭐) on game map.
+ * Space / Enter — Open selected cell.
+ * F / f — Install/remove flag (🚩) on selected cell.
+ * Esc — Instant exit from the game.
 
-## Инструкция по запуску и сборке
+## Startup instructions
 
-###     Требования
- * Установленный Go версии 1.18 или выше.
+###     Requirements
+ * Go version 1.18 or higher installed.
 
-###     Быстрый запуск для разработки:
+###     Quick start:
 ```Bash
 go run main.go
 ```
 
-* Go автоматически скачает минимальную зависимость для работы с клавиатурой 
-github.com/eiannone/keyboard при первом старте.
+* Go will automatically download the minimal dependency for keyboard handling
+github.com/eiannone/keyboard in first startup.
 
 ---
